@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\AuthorController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\BookController;
 
@@ -14,6 +15,8 @@ use App\Http\Controllers\BookController;
 |
 */
 
-Route::resource('books', BookController::class);
-//Route::post('/books',[BookController::class,'store']);
-//Route::patch('/books',[BookController::class,'update']);
+//Route::resource('books', BookController::class);
+Route::resources([
+    'books' => BookController::class,
+    'authors' => AuthorController::class
+]);
