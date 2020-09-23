@@ -3,6 +3,9 @@
 use App\Http\Controllers\AuthorController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\BookController;
+use App\Http\Controllers\CheckoutBookController;
+use App\Http\Controllers\CheckinBookController;
+use Illuminate\Support\Facades\Auth;
 
 /*
 |--------------------------------------------------------------------------
@@ -20,3 +23,9 @@ Route::resources([
     'books' => BookController::class,
     'authors' => AuthorController::class
 ]);
+
+Route::post('checkout/{book}', [CheckoutBookController::class,'store']);
+Route::post('checkin/{book}', [CheckinBookController::class,'store']);
+Auth::routes();
+
+Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
